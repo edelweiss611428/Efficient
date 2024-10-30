@@ -7,6 +7,10 @@ This package implements clustering methods for optimising the Average Silhouette
 - The Scalable Optimum Silhouette algorithm (scalOSil), which performs the exact Fast Optimum Silhouette clustering (Batool & Hennig 2021, FOSil) but O(n) times faster, where N is the sub-sample size.
 - Automatic selection of the optimal clustering solution.
 - Automatic selection of the optimal number of clusters.
+
+![4b621c59-ea98-46f5-ba9e-9c3844ee89ec](https://github.com/user-attachments/assets/9ffd8c52-b04e-4be8-97c0-09ea6d716715)
+
+
   
 ### Installation
 
