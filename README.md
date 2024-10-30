@@ -8,8 +8,7 @@ This package implements clustering methods for optimising the Average Silhouette
 - Automatic selection of the optimal clustering solution.
 - Automatic selection of the optimal number of clusters.
 
-![b6e23799-f616-4996-9ca0-8a09cb4b8c9b](https://github.com/user-attachments/assets/30f019fc-55f6-4c0d-869e-e3366c09ccbf)
-
+![10c4ad28-6fbc-4351-9a8c-00a3ada882ff](https://github.com/user-attachments/assets/0e3b6ecb-1d0d-4793-ab2e-8ef53c5708ae)
 
 ### Installation
 
