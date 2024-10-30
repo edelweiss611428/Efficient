@@ -19,9 +19,10 @@
 #'
 #' @examples
 #' library("cluster")
-#' dx = dist(faithful)
-#' C = pam(dx, 2)$clustering
-#' plot(Silhouette(C,dx))
+#' x = scale(faithful)
+#' dx = dist(x)
+#' pam_clustering = pam(dx, 2)$clustering
+#' plot(Silhouette(pam_clustering,dx))
 #'
 #' @references
 #' Rousseeuw, P.J. (1987) Silhouettes: A graphical aid to the interpretation and

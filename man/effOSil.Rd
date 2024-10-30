@@ -41,8 +41,8 @@ the number of observations. This function also implements the OSil algorithm for
 x = scale(faithful)
 dx = dist(x)
 effOSil_clustering = effOSil(dx = dx, K = 2:12)
-par(mfrow = c(2,1))
-plot(faithful, col = effOSil_clustering$best_clustering, pch = 4)
+par(mfrow = c(1,2))
+plot(faithful, col = effOSil_clustering$best_clustering, pch = effOSil_clustering$best_clustering)
 plot(2:12, effOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
 par(mfrow = c(1,1))
 

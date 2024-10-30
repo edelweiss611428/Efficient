@@ -30,10 +30,11 @@ This function computes an initialisation for the Optimum Silhouette algorithm, b
 a stand-alone clustering method (i.e., run different clustering algorithms and select the clustering solution maximising the ASW).
 }
 \examples{
-x = faithful
+library("cluster")
+x = scale(faithful)
 dx = dist(x)
-InitClustering = Init(dx, 2, c("pam", "average", "complete"))
-plot(x, col = InitClustering$clustering, pch = 4)
+InitClustering = Init(dx, 2, c("pam", "average", "complete", "single"))
+plot(faithful, col = InitClustering$clustering, pch = InitClustering$clustering)
 print(paste(InitClustering$method, "achieves the highest ASW value"))
 
 }

@@ -23,10 +23,11 @@
 #'
 #'
 #' @examples
-#' x = faithful
+#' library("cluster")
+#' x = scale(faithful)
 #' dx = dist(x)
-#' InitClustering = Init(dx, 2, c("pam", "average", "complete"))
-#' plot(x, col = InitClustering$clustering, pch = 4)
+#' InitClustering = Init(dx, 2, c("pam", "average", "complete", "single"))
+#' plot(faithful, col = InitClustering$clustering, pch = InitClustering$clustering)
 #' print(paste(InitClustering$method, "achieves the highest ASW value"))
 #'
 #' @references

@@ -31,11 +31,12 @@ This function implements the PAMSil algorithm proposed by Van der Laan et al. (2
 a k-medoid clustering algorithm whose objective function is the ASW.
 }
 \examples{
+library("cluster")
 x = scale(faithful)
 dx = dist(x)
 PAMSil_clustering = PAMSil(dx = dx, K = 2:12)
-par(mfrow = c(2,1))
-plot(faithful, col = PAMSil_clustering$best_clustering, pch = 4)
+par(mfrow = c(1,2))
+plot(faithful, col = PAMSil_clustering$best_clustering, pch = PAMSil_clustering$best_clustering)
 plot(2:12, PAMSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
 par(mfrow = c(1,1))
 

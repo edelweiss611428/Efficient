@@ -36,16 +36,17 @@
 #' @examples
 #' x = scale(faithful)
 #' dx = dist(x)
-#' scalOSil_clustering = scalOSil(dx = dx, K = 2:12, n = ceiling(0.25*nrow(x)), ns = 10)
+#' scalOSil_clustering = scalOSil(dx = dx, K = 2:12, n = ceiling(0.25*nrow(x)), ns = 10, rep = 1)
 #' set.seed(59)
-#' par(mfrow = c(2,1))
-#' plot(faithful, col = scalOSil_clustering$best_clustering, pch = 4)
-#' plot(2:12, scalOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
+#' par(mfrow = c(1,2))
+#' plot(faithful, col = scalOSil_clustering$best_clustering, pch = scalOSil_clustering$best_clustering)
+#' plot(2:8, scalOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
 #' par(mfrow = c(1,1))
 #'
 #' @references
 #' Batool, F. and Hennig, C., 2021. Clustering with the average silhouette width. Computational Statistics & Data Analysis, 158, p.107190.
 #'
+#' @importFrom cluster pam
 #' @importFrom stats dist
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}

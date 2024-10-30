@@ -25,9 +25,10 @@ This function computes the Silhouette Widths given a distance matrix and a clust
 }
 \examples{
 library("cluster")
-dx = dist(faithful)
-C = pam(dx, 2)$clustering
-plot(Silhouette(C,dx))
+x = scale(faithful)
+dx = dist(x)
+pam_clustering = pam(dx, 2)$clustering
+plot(Silhouette(pam_clustering,dx))
 
 }
 \references{

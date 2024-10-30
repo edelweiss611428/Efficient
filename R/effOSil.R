@@ -34,14 +34,15 @@
 #' x = scale(faithful)
 #' dx = dist(x)
 #' effOSil_clustering = effOSil(dx = dx, K = 2:12)
-#' par(mfrow = c(2,1))
-#' plot(faithful, col = effOSil_clustering$best_clustering, pch = 4)
+#' par(mfrow = c(1,2))
+#' plot(faithful, col = effOSil_clustering$best_clustering, pch = effOSil_clustering$best_clustering)
 #' plot(2:12, effOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
 #' par(mfrow = c(1,1))
 #'
 #' @references
 #' Batool, F. and Hennig, C., 2021. Clustering with the average silhouette width. Computational Statistics & Data Analysis, 158, p.107190.
 #'
+#' @importFrom cluster pam
 #' @importFrom stats dist
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
