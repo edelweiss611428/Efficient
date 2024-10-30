@@ -5,8 +5,8 @@
 #'
 #' @usage PAMSil(dx, K)
 #'
-#' @param dx A "dist" object, which can be computed using stats::dist().
-#' @param K An integer vector (or scalar) specifying the numbers of clusters. By default, K = 2:12.
+#' @param dx A dist object, which can be computed using the stats::dist() function.
+#' @param K An integer vector specifying the number of clusters. By default, K = 2:12.
 #'
 #' @return
 #' \describe{
@@ -21,16 +21,17 @@
 #' }
 #'
 #' @details
-#' This function implements the PAMSil algorithm proposed by Van der Laan et al. (2003).
-#' It is a k-medoids clustering algorithm whose objective function is the Average Silhouette Width.
-#'
+#' This function implements the PAMSil algorithm proposed by Van der Laan et al. (2003),
+#' a k-medoid clustering algorithm whose objective function is the ASW.
 #'
 #' @examples
-#' dx = dist(faithful)
-#' pamsilC = PAMSil(dx, 2:8)
+#' x = scale(faithful)
+#' dx = dist(x)
+#' PAMSil_clustering = PAMSil(dx = dx, K = 2:12)
 #' par(mfrow = c(2,1))
-#' plot(faithful, col = pamsilC$best_clustering, pch = 4)
-#' plot(2:8, pamsilC$asw, type = "l", xlab = "k", ylab = "ASW")
+#' plot(faithful, col = PAMSil_clustering$best_clustering, pch = 4)
+#' plot(2:12, PAMSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
+#' par(mfrow = c(1,1))
 #'
 #' @references
 #' Van der Laan, M., Pollard, K. and Bryan, J., 2003. A new partitioning around medoids algorithm. Journal of Statistical Computation and Simulation, 73(8), pp.575-584.

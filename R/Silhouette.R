@@ -1,13 +1,13 @@
 #' @name Silhouette
 #' @title Silhouette Width
 #'
-#' @description  This function computes the Silhouette Widths for all data points in the dataset.
+#' @description  This function computes the Silhouette Widths given a distance matrix and a clustering solution.
 #'
 #' @usage Silhouette(C, dx)
 #'
-#' @param C An integer vector specifying a k-partition of the dataset. min(C) must be 1
+#' @param C An integer vector specifying a clustering solution. min(C) must be 1
 #' and max(C) must be k.
-#' @param dx  A "dist" object, which can be computed using stats::dist().
+#' @param dx  A dist object, which can be computed using the stats::dist() function.
 #'
 #' @return A numeric matrix of class "silhouette" containing three columns
 #' \describe{

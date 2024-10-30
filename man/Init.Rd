@@ -2,39 +2,39 @@
 % Please edit documentation in R/Init.R
 \name{Init}
 \alias{Init}
-\title{Initialization methods for the Optimum Silhouette algorithm}
+\title{Initialisation methods for the Optimum Silhouette algorithm.}
 \usage{
 Init(dx, k, initMethod)
 }
 \arguments{
-\item{dx}{dx A "dist" object, which can be computed using stats::dist().}
+\item{dx}{dx A dist object, which can be computed using the stats::dist() function.}
 
-\item{k}{An integer scalar specifying the number of clusters.}
+\item{k}{An integer specifying the number of clusters.}
 
-\item{initMethod}{A character vector (or string) specifying initialization methods. Options include any
+\item{initMethod}{A character vector (or string) specifying initialisation methods. Options include any
 combination of "pam", "average", "single", "complete", "ward.D", "ward.D2", "mcquitty", "median", and "centroid".
 By default, initMethod = "average".}
 }
 \value{
 \describe{
-\item{clustering}{An initialized clustering.}
-\item{asw}{The ASW associated with the initialized clustering.}
-\item{method}{The "best" initialization method.}
+\item{clustering}{An initialised clustering.}
+\item{asw}{The ASW associated with the initialised clustering.}
+\item{method}{The "best" initialisation method.}
 }
 }
 \description{
-This function computes an initialization for the Optimum Silhouette algorithm.
+This function computes an initialisation for the Optimum Silhouette algorithm.
 }
 \details{
-This function computes an initialization for the Optimum Silhouette algorithm, but it can be used as
-a stand-alone clustering method.
+This function computes an initialisation for the Optimum Silhouette algorithm, but it can be used as
+a stand-alone clustering method (i.e., run different clustering algorithms and select the clustering solution maximising the ASW).
 }
 \examples{
 x = faithful
 dx = dist(x)
-Initres = Init(dx, 2, c("pam", "average", "complete"))
-plot(x, col = Initres$clustering, pch = 4)
-print(paste(Initres$method, "achieves the highest ASW value"))
+InitClustering = Init(dx, 2, c("pam", "average", "complete"))
+plot(x, col = InitClustering$clustering, pch = 4)
+print(paste(InitClustering$method, "achieves the highest ASW value"))
 
 }
 \references{

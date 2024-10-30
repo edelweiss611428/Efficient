@@ -7,10 +7,10 @@
 Silhouette(C, dx)
 }
 \arguments{
-\item{C}{An integer vector specifying a k-partition of the dataset. min(C) must be 1
+\item{C}{An integer vector specifying a clustering solution. min(C) must be 1
 and max(C) must be k.}
 
-\item{dx}{A "dist" object, which can be computed using stats::dist().}
+\item{dx}{A dist object, which can be computed using the stats::dist() function.}
 }
 \value{
 A numeric matrix of class "silhouette" containing three columns
@@ -21,7 +21,7 @@ A numeric matrix of class "silhouette" containing three columns
 }
 }
 \description{
-This function computes the Silhouette Widths for all data points in the dataset.
+This function computes the Silhouette Widths given a distance matrix and a clustering solution.
 }
 \examples{
 library("cluster")

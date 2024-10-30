@@ -1,6 +1,6 @@
 #include <Rcpp.h>
-
 using namespace Rcpp;
+
 
 // 0. Relevant functions
 // indexing(): Convert 2d index to 1d index to extract elements from dist objects
@@ -463,7 +463,6 @@ double UpdateASW(NumericVector UCTdist, IntegerVector C, NumericVector dist, int
               }
             }
           }
-
           ASW += (b - a)/std::max(b, a);
         }
         //space for readability

@@ -5,13 +5,14 @@
 #'
 #' @usage effOSil(dx, K, initMethod, variant)
 #'
-#' @param dx A "dist" object, which can be computed using stats::dist().
-#' @param K An integer vector (or scalar) specifying the numbers of clusters. By default, K = 2:12.
-#' @param initMethod A character vector (or string) specifying initialization methods.
-#' By default, initMethod = "average". See ?Init for more details.
-#' @param variant A character string specifying a variant. Options include "efficient" and "original".
-#' If variant = "original", the original OSil algorithm is used. If variant = "efficient", effOSil is used.
-#' By default, variant = "efficient".
+#' @param dx A dist object, which can be computed using the stats::dist() function.
+#' @param K An integer vector specifying the number of clusters. By default, K = 2:12.
+#' @param initMethod A character vector specifying initialisation methods. By default,
+#' initMethod = "average"; however, to achieve the best initialisation in terms of the ASW,
+#' various initialisation methods should be used (e.g., initMethod = c("single", "average", "complete", "pam")).
+#' See ?Init for more details.
+#' @param variant An algorithmic variant. Options include "efficient" and "original". By default, variant = "efficient", indicating that effOSil is used.
+#' If variant = "original", the original, computationally expensive OSil algorithm is used.
 #'
 #' @return
 #' \describe{
@@ -25,16 +26,18 @@
 #'
 #' @details
 #' This function implements the Efficient Optimum Silhouette (effOSil) algorithm, an O(N) runtime improvement of
-#' the original, computationally expensive OSil algorithm proposed by Batool & Hennig (2021) (N is the number of
-#' observations). An implementation of the original OSil algorithm is also available for run time comparisions.
+#' the original, computationally expensive Fast OSil (FOSil) algorithm proposed by Batool & Hennig (2021) where N is
+#' the number of observations. This function also implements the OSil algorithm for comparision purporses.
 #'
 #'
 #' @examples
-#' dx = dist(faithful)
-#' effC = effOSil(dx, 2:8)
+#' x = scale(faithful)
+#' dx = dist(x)
+#' effOSil_clustering = effOSil(dx = dx, K = 2:12)
 #' par(mfrow = c(2,1))
-#' plot(faithful, col = effC$best_clustering, pch = 4)
-#' plot(2:8, effC$asw, type = "l", xlab = "k", ylab = "ASW")
+#' plot(faithful, col = effOSil_clustering$best_clustering, pch = 4)
+#' plot(2:12, effOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
+#' par(mfrow = c(1,1))
 #'
 #' @references
 #' Batool, F. and Hennig, C., 2021. Clustering with the average silhouette width. Computational Statistics & Data Analysis, 158, p.107190.

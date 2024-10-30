@@ -1,21 +1,22 @@
 #' @name scalOSil
-#' @title The Scalable Optimum Silhouette algorithm
+#' @title The Scalable Optimum Silhouette Algorithm
 #'
-#' @description  This function implements the Scalable Optimum Silhouette algorithm.
+#' @description  This function implements the Scalable Optimum Silhouette (scalOSil) algorithm.
 #'
 #' @usage scalOSil(dx, K, n, ns, rep, initMethod, variant)
 #'
-#' @param dx A "dist" object, which can be computed using stats::dist().
-#' @param K An integer vector (or scalar) specifying the numbers of clusters. By default, K = 2:12.
-#' @param n An integer specifying the sample size. If not specified (NULL), n is set to 0.2*N where
+#' @param dx A dist object, which can be computed using the stats::dist() function.
+#' @param K An integer vector specifying the number of clusters. By default, K = 2:12.
+#' @param n An integer specifying the sample size. If not specified, n = 0.1*N where
 #' N is the number of observations.
-#' @param ns An integer specifying the number of random samples used in each instance. By default, ns = 1.
-#' @param rep An integer specifying the number of scalOSil instances. By default, rep = 10.
-#' @param initMethod A character vector (or string) specifying initialization methods. By default,
-#' initMethod = "average". See ?Init for more details.
-#' @param variant A character string specifying a variant. Options include "scalable" and "original".
-#' If variant = "original", the original FOSil algorithm is used. If variant = "scalable", scalOSil is used.
-#' By default, variant = "scalable".
+#' @param ns An integer specifying the number of random samples in each instance. By default, ns = 10.
+#' @param rep An integer specifying the number of scalOSil instances. By default, rep = 1.
+#' @param initMethod A character vector specifying initialisation methods. By default,
+#' initMethod = "average"; however, to achieve the best initialisation in terms of the ASW,
+#' various initialisation methods should be used (e.g., initMethod = c("single", "average", "complete", "pam")).
+#' See ?Init for more details.
+#' @param variant An algorithmic variant. Options include "scalable" and "original". By default, variant = "scalable", indicating that scalOSil is used.
+#' If variant = "original", the original, computationally expensive FOSil algorithm is used.
 #'
 #' @return
 #' \describe{
@@ -28,16 +29,19 @@
 #'
 #' @details
 #' This function implements the Scalable Optimum Silhouette (scalOSil) algorithm, an O(n) runtime improvement of
-#' the original, computationally expensive Fast OSil (FOSil) algorithm proposed by Batool & Hennig (2021) (n is
-#' the sample size). An implementation of the original FOSil algorithm is also available for run time comparisions.
+#' the original, computationally expensive Fast OSil (FOSil) algorithm proposed by Batool & Hennig (2021) where n is
+#' the sub-sample size. This function also implements the FOSil algorithm for comparision purporses.
 #'
 #'
 #' @examples
-#' dx = dist(faithful)
-#' scalC = scalOSil(dx, 2:8)
+#' x = scale(faithful)
+#' dx = dist(x)
+#' scalOSil_clustering = scalOSil(dx = dx, K = 2:12, n = ceiling(0.25*nrow(x)), ns = 10)
+#' set.seed(59)
 #' par(mfrow = c(2,1))
-#' plot(faithful, col = scalC$best_clustering, pch = 4)
-#' plot(2:8, scalC$asw, type = "l", xlab = "k", ylab = "ASW")
+#' plot(faithful, col = scalOSil_clustering$best_clustering, pch = 4)
+#' plot(2:12, scalOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
+#' par(mfrow = c(1,1))
 #'
 #' @references
 #' Batool, F. and Hennig, C., 2021. Clustering with the average silhouette width. Computational Statistics & Data Analysis, 158, p.107190.
@@ -56,7 +60,7 @@ scalOSil = function(dx, K = 2:12, n = NULL, ns = 1, rep = 10, initMethod = "aver
   }
 
   if(is.null(n)){
-    n = ceiling(0.2*N)
+    n = ceiling(0.1*N)
   } else{
 
     if((!is.numeric(n)) | (length(n)!=1)){
@@ -80,6 +84,7 @@ scalOSil = function(dx, K = 2:12, n = NULL, ns = 1, rep = 10, initMethod = "aver
     stop("ns must be an integer")
   }
   ns = as.integer(ns)
+
   if(ns < 1){
     stop("ns must be larger than zero")
   }
