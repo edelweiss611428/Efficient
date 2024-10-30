@@ -27,7 +27,7 @@ PAMSil(dx, K)
 This function implements the PAMSil algorithm.
 }
 \details{
-This function implements the PAMSil algorithm proposed by Van der Laan et al. (2003),
+This function implements the PAMSil algorithm proposed by Van der Laan & Pollard (2003),
 a k-medoid clustering algorithm whose objective function is the ASW.
 }
 \examples{

@@ -40,7 +40,7 @@
 #' set.seed(59)
 #' par(mfrow = c(1,2))
 #' plot(faithful, col = scalOSil_clustering$best_clustering, pch = scalOSil_clustering$best_clustering)
-#' plot(2:8, scalOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
+#' plot(2:12, scalOSil_clustering$asw, type = "l", xlab = "k", ylab = "ASW")
 #' par(mfrow = c(1,1))
 #'
 #' @references

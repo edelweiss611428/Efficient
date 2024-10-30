@@ -25,8 +25,7 @@
 #' plot(Silhouette(pam_clustering,dx))
 #'
 #' @references
-#' Rousseeuw, P.J. (1987) Silhouettes: A graphical aid to the interpretation and
-#' validation of cluster analysis. J. Comput. Appl. Math., 20, 53–65.
+#' Rousseeuw, P.J., 1987. Silhouettes: a graphical aid to the interpretation and validation of cluster analysis. Journal of computational and applied mathematics, 20, pp.53-65.
 #'
 #' @importFrom cluster pam
 #' @importFrom stats dist
