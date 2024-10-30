@@ -4,7 +4,7 @@
 This package implements clustering methods for optimising the Average Silhouette Width (ASW), including:
 - The PAMSil algorithm (Van der Laan & Pollard 2003), a k-medoid clustering algorithm for optimising the ASW.
 - The Efficient Optimum Silhouette algorithm (effOSil), which performs the exact Optimum Silhoutte clustering (Batool & Hennig 2021, OSil) but O(N) times faster, where N is the number of observations in the dataset.
-- The Scalable Optimum Silhouette algorithm (scalOSil), which performs the exact Fast Optimum Silhouette clustering (Batool & Hennig 2021, FOSil) but O(n) times faster, where N is the sub-sample size.
+- The Scalable Optimum Silhouette algorithm (scalOSil), which performs the exact Fast Optimum Silhouette clustering (Batool & Hennig 2021, FOSil) but O(n) times faster, where n is the sub-sample size.
 - Automatic selection of the optimal clustering solution.
 - Automatic selection of the optimal number of clusters.
 
