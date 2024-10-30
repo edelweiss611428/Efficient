@@ -52,7 +52,7 @@
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
-scalOSil = function(dx, K = 2:12, n = NULL, ns = 1, rep = 10, initMethod = "average", variant = "scalable"){
+scalOSil = function(dx, K = 2:12, n = NULL, ns = 10, rep = 1, initMethod = "average", variant = "scalable"){
 
   if(inherits(dx, "dist") == TRUE){
     N = attr(dx, "Size")
