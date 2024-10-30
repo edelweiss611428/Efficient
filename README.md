@@ -4,12 +4,13 @@
 This package implements clustering methods for optimising the Average Silhouette Width (ASW), including:
 - The PAMSil algorithm (Van der Laan & Pollard 2003), a k-medoid clustering algorithm for optimising the ASW.
 - The Efficient Optimum Silhouette algorithm (effOSil), which performs the exact Optimum Silhoutte clustering (Batool & Hennig 2021, OSil) but O(N) times faster, where N is the number of observations in the dataset.
-- The Scalable Optimum Silhouette algorithm (scalOSil), which performs the exact Fast Optimum Silhouette clustering (Batool & Hennig 2021, FOSil) but O(n) times faster, where N is the sub-sample size.
+- The Scalable Optimum Silhouette algorithm (scalOSil), which performs the exact Fast Optimum Silhouette clustering (Batool & Hennig 2021, FOSil) but O(n) times faster, where n is the sub-sample size.
 - Automatic selection of the optimal clustering solution.
 - Automatic selection of the optimal number of clusters.
 
-![8a666433-4091-4567-8501-579ece3cef01](https://github.com/user-attachments/assets/234922ae-d66f-4f54-abae-ad0cd981a6fa)
-  
+![b6e23799-f616-4996-9ca0-8a09cb4b8c9b](https://github.com/user-attachments/assets/30f019fc-55f6-4c0d-869e-e3366c09ccbf)
+
+
 ### Installation
 
 To install the package, Rtools and Rcpp are required. However, we are unable to compile the ASW package with the latest version of Rcpp (Rcpp v. 1.0.13). Users should use older Rcpp versions (e.g., Rcpp v.1.0.12) in the meantime.
