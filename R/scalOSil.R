@@ -118,20 +118,6 @@ scalOSil = function(dx, K = 2:12, n = NULL, ns = 10, rep = 1, initMethod = "aver
   colnames(clusterings) = K
   names(asw) = K
 
-  if(variant == "scalable"){
-    PC_Step = function(dx1, iC, n, k){return(.scalOSil_PC(dx1, iC, n, k))}
-    C_Step = function(dx, dx1, k, PCres, idxPC, idxC, n, n2, N){
-      return(.scalOSil_C(dx, k, PCres, idxPC, idxC, n, n2, N))
-    }
-  } else if(variant == "original"){
-    PC_Step = function(dx1, iC, n, k){return(.FOSil_PC(dx1, iC, n, k))}
-    C_Step = function(dx, dx1, k, PCres, idxPC, idxC, n, n2, N){
-      return(.FOSil_C(dx, dx1, k, PCres, idxPC, idxC, n, n2, N))
-    }
-  } else{
-    stop("The variant is not supported!")
-  }
-
   for(i in 1:nK){
 
 
@@ -140,12 +126,19 @@ scalOSil = function(dx, K = 2:12, n = NULL, ns = 10, rep = 1, initMethod = "aver
     for(j in 1:rep){
       best_PCASW = -1
       for(l in 1:ns){
+
         temp_idxVec = sample.int(N)
         temp_idxPC = temp_idxVec[1:n]
         temp_idxC = temp_idxVec[(n+1):N]
         temp_dx1 = .subDistCpp(dx, temp_idxPC-1L, FALSE, FALSE, N, n)
         iC = Init(temp_dx1, K[i], initMethod)$clustering-1L
-        temp_PC = PC_Step(temp_dx1, iC, n, K[i])
+
+        if(variant == "scalable"){
+          temp_PC = .scalOSil_PC(temp_dx1, iC, n, K[i])
+        } else{
+          temp_PC = .FOSil_PC(temp_dx1, iC, n, K[i])
+        }
+
 
         if(temp_PC$ASW > best_PCASW){
           best_PCASW = temp_PC$ASW
@@ -158,9 +151,15 @@ scalOSil = function(dx, K = 2:12, n = NULL, ns = 10, rep = 1, initMethod = "aver
 
       }
 
-      FCres = C_Step(dx, dx1, K[i], PCres, idxPC-1L, idxC-1L, n, N-n, N)
+      if(variant == "scalable"){
+        FCres = .scalOSil_C(dx, K[i], PCres, idxPC-1L, idxC-1L, n, N-n, N)
+      } else{
+        FCres = .FOSil_C(dx, dx1, K[i], PCres, idxPC-1L, idxC-1L, n, N-n, N)
+      }
+
+
       FCres[idxVec] = FCres
-      tempASW = .ASWCpp(FCres, dx, N,K[i])
+      tempASW = .ASWCpp(FCres, dx, N, K[i])
       if(tempASW > bestASW){
         bestASW = tempASW
         bestClustering = FCres
