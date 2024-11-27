@@ -12,7 +12,7 @@ This package implements clustering methods for optimising the Average Silhouette
 
 ### Installation
 
-To install the package, Rtools and Rcpp are required. However, we are unable to compile the ASW package with the latest version of Rcpp (Rcpp v. 1.0.13). Users should use older Rcpp versions (e.g., Rcpp v.1.0.12) in the meantime.
+To install the package, Rtools and Rcpp are required. However, we have been unable to compile the ASW package under the latest version of Rcpp (Rcpp v. 1.0.13). Users should use older Rcpp versions (e.g., Rcpp v.1.0.12) in the meantime.
 
 ```
 pkg = "https://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_1.0.12.tar.gz"
@@ -23,7 +23,7 @@ devtools::install_github("edelweiss611428/ASW")
 
 ### Contact
 
-To report bugs or seek help with installation or running the package, please contact edelweiss611428@gmail.com. We will respond to inquiries within 2 days.
+To report bugs or seek help with installation or running the package, please contact edelweiss611428@gmail.com.
 
 ### References
 
