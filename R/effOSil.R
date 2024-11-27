@@ -86,15 +86,18 @@ effOSil = function(dx, K = 2:12, initMethod = "average", variant = "efficient"){
   names(asw) = K
   names(nIter) = K
 
+  if(variant == "efficient"){
+    FUNC = function(dx, initC, N, k){return(.effOSilCpp(dx, initC, N, k))}
+  } else if(variant == "original"){
+    FUNC = function(dx, initC, N, k){return(.OSilCpp(dx, initC, N, k))}
+  } else{
+    stop("The variant is not supported!")
+  }
+
+
   for(i in 1:nK){
     init = Init(dx, K[i], initMethod)$clustering - 1L
-
-    if(variant == "efficient"){
-      OSilres = .effOSilCpp(dx, init, N, K[i])
-    } else{
-      OSilres = .OSilCpp(dx, init, N, K[i])
-    }
-
+    OSilres = FUNC(dx, init, N, K[i])
     clusterings[,i] = OSilres$Clustering
     asw[i] = OSilres$ASW
     nIter[i] = OSilres$nIter
